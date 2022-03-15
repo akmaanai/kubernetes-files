@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tcp-pod
+spec:
+  containers:
+  - name: tcp
+    image: dellabetta/tcpserver
+    ports:
+    - containerPort: 80

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-configmap
+spec:
+  containers:
+    - name: nginx
+      image: nginx:stable
+      volumeMounts:
+      - name: cm-aku
+        mountPath: /etc/config
+    - name: ambassador
+      image: haproxy:lts
+      ports:
+      - containerPort: 60
+      volumeMounts: 
+      - name: file-conf
+        mountPath: /usr/local/etc/haproxy/
+  volumes:
+    - name: cm-aku
+      configMap:
+        name: another-config
+    - name: file-conf
+      configMap: 
+        name: haproxy

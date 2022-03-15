@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod11
+  name: pod11
+spec:
+  containers:
+  - args:
+    - sleep
+    - "3600"
+    image: busybox
+    name: pod11
+    env: 
+    - name: PLANET
+      value: blue
+    - name: VALUE1
+      valueFrom:
+        configMapKeyRef:
+          name: space
+          key: planet
+    - name: VALUE2
+      valueFrom:
+        configMapKeyRef:
+          name: space
+          key: moon
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

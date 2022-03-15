@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pv-pod
+  name: pv-pod2
+spec:
+  nodeName: gke-cluster-2-default-pool-188a924a-81vt
+  containers:
+  - image: busybox:latest
+    name: pv-pod
+    args:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - name: data
+      mountPath: "/data"
+  volumes:
+  - name: data
+    hostPath:
+      path: "/home/zhumalievaakmaanai/data"

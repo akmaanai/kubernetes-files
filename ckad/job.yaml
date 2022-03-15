@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello
+spec:
+  activeDeadlineSeconds: 22
+  template:
+    spec:
+      containers:
+      - name: hello
+        image: busybox:stable
+        command: [ "date"]
+      restartPolicy: Never

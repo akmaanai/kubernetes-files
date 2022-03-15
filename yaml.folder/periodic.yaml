@@ -1,0 +1,11 @@
+on: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: busybox
+    command: ["date"]
+    ports:
+    - containerPort: 80

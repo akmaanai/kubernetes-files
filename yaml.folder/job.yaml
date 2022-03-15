@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: hello-job
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command:
+        - echo
+        - Hello I am running job
+        image: busybox
+        name: hello-job
+        resources: {}
+      restartPolicy: Never
+status: {}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: second-job
+spec:
+  completions: 3
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command:
+        - date
+        - echo
+        - Hello from Aku
+        image: busybox
+        name: second-job
+        resources: {}
+      restartPolicy: Never
+status: {}
